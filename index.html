@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="format-detection" content="telephone=no">
+<title>MFC</title>
+<link href="assets/css/common.css?01234567" rel="stylesheet">
+<!--<link href="assets/img/favicon.ico" rel="shortcut icon">-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css>
+
+
+<!--<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css>-->
+
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+  .js-text-slide-in,
+  .js-text-mask-wrap {
+    line-height: 0;
+  }
+  .js-text-mask {
+    line-height: 1;
+    overflow: hidden;
+  }
+  .js-text-mask span span {
+    display: inline-block;
+    transform: translateY(100%);
+    visibility: hidden;
+  }
+</style>
+</head>
+
+<body id="top">
+<div id="pageTop"></div>
+
+<style>
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color:#fff;
+    height: 100%;
+    z-index: 1000;
+}
+.logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+</style>
+
+<div class="background"></div>
+<div class="logo"><h1><img src="assets/img/logo.png" alt="MITSUBOSHI FORGINGロゴマーク"></h1></div>
+
+
+<header>
+<div class="navbar-container">
+    <div class="navbar">
+
+        <div class="left-side">
+        </div>
+        
+        <div class="right-side">
+          <div><a class="text-hover" href="#"><img src="assets/img/icon-flag-en.jpg" alt="英語の国旗"> ENG</a></div>
+          <div><a class="text-hover" href="#"><img src="assets/img/icon-flag-th.jpg" alt="タイ語の国旗"> THAI</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="nav-container">
+    <div class="nav-content">
+        <div class="left"><a class="text-hover" href="#"><img src="assets/img/logo.png" alt="MITSUBOSHI FORGINGロゴマーク"></a></div>
+        
+        <div class="nav-menu right">
+            <div><a class="text-hover" href="#">トップ</a><span class="dummy-icon"></span></div>
+            <div><a class="text-hover" href="#">会社情報</a><span class="dummy-icon"></span></div>
+            <div><a class="text-hover" href="#">製品情報</a><span class="dummy-icon"></span></div>
+            
+            <div class="dropdown">
+                <a class="text-hover" href="#">技術情報</a><i class="fa-solid fa-sort-down"></i>
+                <div class="dropdown-content">
+                    <a href="#">製品開発 VA･VE</a>
+                    <a href="#">本社の技術・開発・設備</a>
+                    <a href="#">生産ライン</a>
+                    <a href="#">品質保証</a>
+                </div>
+            </div>
+            
+            <div><a class="text-hover" href="#">環境方針・CSR</a><span class="dummy-icon"></span></div>
+            <div><a class="text-hover" href="#">採用情報</a><span class="dummy-icon"></span></div>
+            <div><a class="text-hover" href="#">お知らせ</a><span class="dummy-icon"></span></div>
+        </div>
+    </div>
+</div>
+</header>
+
+<style>
+  .main-visual {
+    margin-bottom:150px;
+    position:relative;
+  }
+  /*.main-copy {
+    background:#3280e0;
+    color:#fff;
+    position:absolute;
+    z-index:50;
+    top:70px;
+    right: 0;
+    font-family:"YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+    font-size:50px;
+    font-weight:500;
+    padding:10px 10px 10px 20px;
+    line-height:1.35;
+  }*/
+  .main-visual img {
+    width:100%;
+    height:auto;
+  }
+  @media only screen and (max-width: 991px) {
+    .main-visual {
+      margin-bottom:100px;
+      position:relative;
+    }
+  }
+</style>
+
+
+<style>
+  .xx {
+    top:260px;
+    right: 0px;
+    position:absolute;
+    z-index:40;
+  }
+  .text-mask {
+    overflow: hidden;
+    position: relative;
+  }
+  .bkco {
+    position: absolute;
+    clip-path: inset(0 0 0 120%); 
+    animation: bkani 5s linear forwards;
+  }
+  @keyframes bkani {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  .ani {
+    clip-path: inset(0 120% 0 0); 
+    animation: reveal 10s linear forwards;
+    animation-delay: 3.5s;
+  }
+  @keyframes reveal {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .xx {
+      top:210px;
+    }
+  }
+  @media only screen and (max-width: 425px){
+    .xx {
+      top: 470px;
+    }
+    .bkco, .ani{
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="xx">
+  <img class="bkco" src="./assets/img/bkcolor.png">
+  <div class="text-mask">
+    <img class="ani" src="./assets/img/main-en.png">
+  </div>
+</div>
+
+
+
+<section class="main-visual">
+  <picture>
+    <source media="(max-width: 768px)" srcset="assets/img/main-visual-sp-231222.jpg">
+    <img id="main-visual-img" src="assets/img/main-visual-231222.jpg" alt="三星の技術でお客様のニーズに応え、世界の美しい環境を次の世代へ">
+  </picture>
+</section>
+
+
+
+<!--
+<style type="text/css">
+  .hexagon-wrapper {
+    position: relative;
+    height: 700px;
+    /*background:lime;*/
+    margin:0;
+    padding:0;
+  }
+  .hexagon {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  .hex1 { top:-50px; left:180px;}
+  .hex2 { top:140px; left:-140px;}
+</style>
+
+
+<div class="hexagon-wrapper">
+  <img src="assets/img/hex1.png" alt="" class="hexagon hex1">
+  <img src="assets/img/hex2.png" alt="" class="hexagon hex2">
+</div>
+-->
+
+<style>
+  .movie .wrap-movie {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:85%;
+    max-height: 1000px;
+    margin:0 auto;
+    margin-top: 30px;
+  }
+  .wrap-movie .left {
+    flex: 5.0;
+  }
+  .wrap-movie .right {
+    flex: 5.0;
+    margin-left:30px;
+  }
+  .wrap-movie .left img {
+    width:100%;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .wrap-movie .right h2 {
+    font-weight:500;
+    color:#3280e0;
+    font-size:36px!important;
+  }
+  .wrap-movie .right h3 {
+    font-weight:500;
+    line-height: 1.75;
+    margin:20px 0 30px;
+    font-size:18px;
+  }
+  .wrap-movie .right a {
+    font-size:18px;
+    color:#3280e0;
+  }
+  @media only screen and (max-width: 991px) {
+    .movie p {
+      display:none;
+    }
+    .movie {
+      padding:0 15px;
+    }
+    .movie .wrap-movie {
+      display:block;
+      width:100%;
+    }
+    .wrap-movie .left {
+
+      flex: 5.0;
+    }
+    .wrap-movie .right {
+      flex: 5.0;
+      margin-left:0px;
+      margin-top:20px;
+    }
+    .wrap-movie .right h2 {
+      font-size:30px!important;
+    }
+    .wrap-movie .right h3, .wrap-movie .right a {
+      font-size:16px;
+    }
+  }
+</style>
+
+
+<style>
+  .name-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-top: -100px;
+    overflow: hidden;
+  }
+  .name-wrap {
+    white-space: nowrap;
+    width: 100%;
+    /*position: absolute;
+    z-index: 10;*/
+  }
+  .name-wrap-right {
+    position: absolute;
+    left: 100vw;
+  }
+  .name-text {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-weight:100;
+    color: #e6e6e6;
+    width: 100%;
+    text-align: center;
+    font-size: 8.2vw;
+    white-space: nowrap;
+    overflow: hidden;
+    display:block;
+    letter-spacing:-2px;
+  }
+</style>
+
+
+<section class="movie">
+  <div class="name-container">
+    <div class="name-wrap">
+      <p class="name-text">Eternal Spring of the World</p>
+    </div>
+    <div class="name-wrap name-wrap-right">
+      <p class="name-text">Eternal Spring of the World</p>
+    </div>
+  </div>
+
+
+  <div class="wrap-movie">
+    <div class="left">
+      <a href="https://www.youtube.com/watch?v=pvV0Ixkmcas" data-lity><img src="assets/img/thumb-movie.jpg" alt="プロモーション動画用サムネイル"></a>
+    </div>
+    <div class="right">
+      <h2>『世界永遠の春』 </h2>
+      <h3>メッセージにある『春』の意味は世界の平和、美しい環境を意味します。我々三星は冷間塑性加工により様々な部品の軽量化をお客様に提案し世界中の車に採用されて参りました。その結果燃費が向上しCO2排t出の削減に寄与致しました。今後も冷間塑性加工技術を生かし環境保全に貢献致します。そうする事で世界が永遠に美しい環境を保てる様、我々三星グループは各国と力を合わせ邁進致します。</h3>
+
+      <a href="#" class="text-hover">会社情報を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .product {
+    margin-top: 200px;
+    background:#3280e0;
+    padding:0px;
+    position: relative;
+  }
+  .bg-white-upper {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-image: url("assets/img/bg-white.png");
+    background-repeat: repeat-x;
+  }
+  .bg-white-bottom {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom:-20px;
+    background-image: url("assets/img/bg-white.png");
+    background-repeat: repeat-x;
+  }
+  .wrap-product {
+    display:flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+    width:1100px;
+    margin:0 auto;
+  }
+  .wrap-product .left {
+    /*flex: 7.0;*/
+    color:#fff;
+    padding-right:40px;
+  }
+  .wrap-product h2 {
+    font-weight:100;
+    font-size:80px!important;
+    /* line-height: 1.35; */
+    margin-left:-7px!important;
+  }
+  .wrap-product h2 .js-text-mask{
+    /* line-heightの代わり */
+    display: inline-block;
+    margin-top: .175em;
+    margin-bottom: .175em;
+  }
+  .wrap-product h2 .sub {
+    font-size:26px;
+    font-weight: 300;
+    display: block;
+    padding-left:7px;
+  }
+  .wrap-product p {
+    margin:100px 0;
+  }
+  .wrap-product .right {
+    /*flex: 3.0;*/
+    margin-left:0px;
+    /*position: relative;*/
+  }
+  .wrap-product .slideshow {
+    position: relative;
+    overflow: hidden;
+    height: 719px;
+    width:520px;
+  }
+  .wrap-product .slide {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    z-index: 100;
+  }
+  @media only screen and (max-width: 991px) {
+    .product {
+      font-size:16px;
+      margin-top: 50px;
+      padding:50px 15px 0;
+    }
+    .bg-white-upper, .bg-white-bottom {
+      display: none;
+    }
+    .wrap-product {
+      display:block;
+      width:100%;
+    }
+    .wrap-product .left {
+      padding-right:0px;
+    }
+    .wrap-product h2 {
+      font-size:30px!important;
+      margin-left:0px!important;
+    }
+    .wrap-product h2 .sub {
+      font-size:22px;
+      display: block;
+      padding-left:0px;
+    }
+    .wrap-product p {
+      margin:30px 0;
+      padding:0;
+    }
+    .wrap-product .right {
+      margin-top:30px;
+    }
+    .wrap-product .slideshow {
+      position: relative;
+      overflow: hidden;
+      height: 440px;
+      width:280px;
+    }
+    .wrap-product .slideshow img {
+      width: 100%;
+      height: auto;
+    }
+
+  }
+</style>
+
+<section class="product">
+  <div class="bg-white-upper"></div>
+  <div class="bg-white-bottom"></div>
+  <div class="wrap-product">
+    <div class="left">
+      <h2 class="js-text-slide-in">
+        <div class="js-text-mask-wrap main">
+          <div class="js-text-mask"><span>Our&nbsp;Product</span></div>
+        </div>
+        <div class="js-text-mask-wrap sub">
+          <div class="js-text-mask"><span>製品情報</span></div>
+        </div>
+      </h2>
+      <p>当社では、自動車向け、オートバイ向け、農機具・その他向けに様々な部品の生産を行っています。</p>
+      <a href="#" class="text-hover text-hover-w">製品一覧を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+    </div>
+    <div class="right">
+      <div class="slideshow">
+        <img src="assets/img/top-product1-231130.jpg" alt="自動車向け" class="slide">
+        <img src="assets/img/top-product2-231130.jpg" alt="オートバイ向け" class="slide">
+        <img src="assets/img/top-product3-231130.jpg" alt="農機具・その他向け" class="slide">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+  .program {
+    margin-top:80px;
+    padding-top: 80px;
+  }
+  #top .program .side-scroll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .program .container {
+    width: 100%;
+    max-width: 1166px;
+    margin: 0 auto;
+  }
+  .program h2 {
+    color:#3280e0;
+    font-weight:100;
+    font-size:80px!important;
+    /* line-height: 1.35; */
+    margin-bottom: 50px;
+  }
+  .wrap-product h2 .js-text-mask{
+    /* line-heightの代わり */
+    display: inline-block;
+    margin-top: .175em;
+    margin-bottom: .175em;
+  }
+  .program h2 .sub {
+    font-size:26px;
+    font-weight: 400;
+    display: block;
+    margin-top: 20px;
+  }
+
+  #top .program .side-scroll-list-wrapper {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    margin-top:80px;
+    /*background-color:lime;*/
+    margin-left:-25px;
+  }
+  #top .program .side-scroll-list {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: flex;
+    gap: 0 0px;
+  }
+  #top .program .side-scroll-item {
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    height: 360px;
+    /*background-color: #fff;*/
+    align-items: stretch; /* この行を追加 */
+    flex-direction: row; /* フレックスの方向を変更 */
+  }
+  #top .program .side-scroll-item .main-img {
+    margin-right: 0px; /* 画像とテキストの間にスペースを追加 */
+  }
+
+  #top .program .side-scroll-text {
+    display: flex;
+    flex-direction: column; /* 縦方向に要素を配置 */
+    justify-content: flex-end!important; /* 下揃えに設定 */
+    padding-bottom: 10px; /* 下部のパディングを適用して、テキストが直接端に触れないようにする */
+    height: 100%; /* この行を追加: side-scroll-textの高さを100%にする */
+  }
+  #top .program .side-scroll-text h3 {
+    font-size:26px;
+    color:#3280e0;
+    padding:5px 0px 5px 20px;
+    font-weight:500;
+  }
+  #top .program .side-scroll-text p {
+    font-weight:500;
+    margin-top:20px;
+    padding-left: 20px;
+  }
+  #top .program .side-scroll-text a span {
+    color: #e35a80; /* リンクの色 */
+  }
+  #top .program .side-scroll-item + .side-scroll-item {
+    margin-left: 80px;
+  }
+
+  .program a {
+    color:#3280e0;
+    margin-top:20px;
+    display:block;
+    padding-left: 20px;
+    text-decoration: none; /* アンダーラインを除去 */
+  }
+
+
+@media only screen and (max-width: 991px) {
+    .program {
+      margin-top:0px;
+      padding-top: 0px;
+      padding-left:15px;
+      padding-right:15px;
+      font-size: 16px;
+    }
+    .program h2 {
+      font-size:30px!important;
+      /* line-height: 1.35; */
+      margin-bottom: 10px;
+      margin-top:0!important;
+      padding:0!important;
+      padding-top:40px!important;
+      font-size:30px!important;
+      letter-spacing: -1.6px;
+    }
+    .program h2 .sub {
+      font-size:22px;
+    }
+    /* 横スクロールセクション */
+    #top .program .side-scroll-list-wrapper {
+        margin-left: 0px!important;
+        margin-top: 0px;
+        height: 400px;
+    }
+    #top .program .side-scroll-list {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        display: flex;
+        gap: 0 0px;
+    }
+    #top .program .side-scroll-item {
+        display: flex;
+        flex-direction: column; /* 縦方向に画像とテキストを配置 */
+        align-items: center;
+        width: 280px;
+        height: 350px;
+        /*background-color: pink;*/
+    }
+    #top .program .side-scroll-item:last-child {
+        margin-right: 50px!important;
+    }
+    #top .program .side-scroll-item .main-img {
+        width: 100%;
+        padding-left: 10px;
+    }
+    #top .program .side-scroll-item .mini-img {
+        width: 30px;
+        margin:0;
+        padding:0;
+    }
+
+    #top .program .side-scroll-text {
+        width: 100%;  /* テキストの幅を100%に */
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start; /* 左揃えの設定 */
+        text-align: left; /* 追加 */
+        padding: 0 0px; /* 両側のパディングを適用して、テキストが直接端に触れないようにする */
+        /*position: relative;
+        top:-15px;*/
+        margin-top:0;
+    }
+    #top .program .side-scroll-text h3 {
+        font-size:24px;
+        margin-top:5px;
+    }
+    #top .program .side-scroll-text p {
+        font-weight:500;
+        margin-top:10px;
+    }
+    #top .program .side-scroll-text a {
+        text-decoration: none;
+        font-weight:500;
+        margin-top:10px;
+    }
+    #top .program .side-scroll-item .main-img {
+        padding-left: 0px;
+    }
+
+    #top .program .side-scroll-item + .side-scroll-item {
+        margin-left: 20px; /* 隣接する要素との間隔を調整 */
+    }
+}
+
+
+
+</style>
+
+
+
+<section class="side-scroll program">
+  <div class="side-scroll-container container">
+  <h2 class="js-text-slide-in">
+    <div class="js-text-mask-wrap main">
+      <div class="js-text-mask"><span>Technical&nbsp;Information</span></div>
+    </div>
+    <div class="js-text-mask-wrap sub">
+      <div class="js-text-mask"><span>技術情報</span></div>
+    </div>
+  </h2>
+  <p>当社では、自動車向け、オートバイ向け、農機具・その他向けに様々な部品の生産を行っています。</p>
+
+    <div class="side-scroll-list-wrapper">
+      <ul class="side-scroll-list">
+        <li class="side-scroll-item">
+          <a href="#" class="text-hover"><img src="assets/img/top1-231130.jpg" width="590" alt="製品開発 VA･VE" class="main-img"></a>
+          <div class="side-scroll-text">
+            <h3>製品開発 VA･VE</h3>
+            <p>多数蓄積されたノウハウから、お客様のニーズに合ったVA･VE提案をご提供いたします。</p>
+            <a href="#" class="text-hover">製品一覧を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+          </div>
+        </li>
+        <li class="side-scroll-item">
+          <a href="#" class="text-hover"><img src="assets/img/top5-231205.jpg" width="590" alt="本社の技術・開発・設備" class="main-img img-hover"></a>
+          <div class="side-scroll-text">
+            <h3>本社の技術・開発・設備</h3>
+            <p>独自加工ノウハウを盛り込んだ加工設備を本社で開発･設計･製作しております。</p>
+            <a href="#" class="text-hover">製品一覧を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+          </div>
+        </li>
+        <li class="side-scroll-item">
+          <a href="#" class="text-hover"><img src="assets/img/top3-231222.jpg" width="590" alt="生産ライン" class="main-img img-hover"></a>
+          <div class="side-scroll-text">
+            <h3>生産ライン</h3>
+            <p style="letter-spacing:1px;">部品生産から組立、機能保証までを少人数、高効率で生産をしています。</p>
+            <a href="#" class="text-hover">製品一覧を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+          </div>
+        </li>
+        <li class="side-scroll-item">
+          <a href="#" class="text-hover"><img src="assets/img/top4-231218.jpg" width="590" alt="品質保証" class="main-img img-hover"></a>
+          <div class="side-scroll-text">
+            <h3>品質保証</h3>
+            <p>安心をお届けし信頼して頂くための仕組みと設備により、グローバル環境での品質を保証しています。</p>
+            <a href="#" class="text-hover">製品一覧を見る <i class="fa-solid fa-circle-arrow-right"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    
+  </div>
+</section>
+
+
+
+<style>
+  footer {
+    background:#3280e0;
+    color:#fff;
+    text-align:center;
+    font-weight:500;
+    padding-bottom:20px;
+    padding-top: 100px;
+  }
+  footer .wrap-footer {
+    display: flex;
+    width:1100px;
+    margin:0 auto;
+    text-align:left;
+    margin-bottom:100px;
+  }
+  footer .wrap-footer .left {
+    flex:1;
+    margin-right:25px;
+  }
+  footer .wrap-footer .right {
+    flex:1;
+    padding-top: 113px;
+    margin-left:25px;
+  }
+  footer .wrap-footer .left img {
+    width:300px;
+    margin-bottom: 40px;
+  }
+  address {
+    font-style: normal;
+  }
+  footer .wrap-footer .map {
+    margin-top: 10px;
+  }
+
+  footer .wrap-footer .right .contact-num {
+    display:flex;
+    margin:30px 0 20px;
+  }
+  footer .wrap-footer .right .contact-num span {
+    font-size: 27px;
+    padding-left:10px;
+  }
+  footer .wrap-footer .right .contact-num-right {
+    margin-left:20px;
+  }
+  footer .wrap-footer .right .btn {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 991px) {
+    footer {
+      margin-top:50px;
+      padding:40px 15px 20px!important;
+      font-size:16px;
+    }
+    footer .wrap-footer {
+      display:block;
+      width:100%;
+      margin-bottom:30px;
+    }
+    footer .wrap-footer .left {
+      margin-right:0px;
+    }
+    footer .wrap-footer .right {
+      padding-top:50px;
+      margin-left:0px;
+    }
+    footer .wrap-footer .left img {
+      width:150px;
+      margin-bottom: 20px;
+    }
+    footer .wrap-footer .right p {
+      font-weight:bold;
+    }
+    footer .wrap-footer .right .contact-num {
+      display:block;
+      margin:30px 0 10px;
+    }
+    footer .wrap-footer .right .contact-num span {
+      font-size: 27px;
+      padding-left:10px;
+    }
+    footer .wrap-footer .right .contact-num-right {
+      margin-left:0px;
+    }
+  }
+</style>
+
+<footer>
+  <div class="wrap-footer">
+    <div class="left">
+      <a href="#" class="text-hover"><h1><img src="assets/img/logo-w.png" alt="MITSUBOSHI FORGINGロゴマーク"></h1></a>
+      <address>
+        56-56/1 Moo 11 Lamlukka Rd. Tambol Buengthonglang Amphur Lamlukka, Pathumthani 12150
+        <div class="map"><a href="https://www.google.co.th/maps/place/Mitsuboshi+Forging+Co.,LTD./@13.9554291,100.7848599,14.87z/data=!4m5!3m4!1s0x0:0xea8bf6e30b20a452!8m2!3d13.955575!4d100.7956388" target="_blank" rel="noopener noreferrer" class="text-hover text-hover-w"><span style="font-size:20px;"><i class="fa-solid fa-location-dot"></i></span> Google Mapで見る</a></div>
+      </address>
+      <copy>© <a href="#" class="text-hover text-hover-w">MITSUBOSHI FORGING CO.,LTD.</a> All Right Reserved.</copy>
+    </div>
+    <div class="right">
+      <p>自動車部品のことでお困りのことがあれば、お気軽にご相談ください。
+        <div class="contact-num">
+          <div class="contact-num-left">
+            TEL. <span><a href="tel:+6629871391" class="text-hover text-hover-w">02-987-1391</a></span>
+          </div>
+          <div class="contact-num-right">
+            FAX. <span>02-987-1398</span>
+          </div>
+        </div>
+
+      <a href="#"><div class="btn">お問い合わせ</div></a>
+    </div>
+  </div>
+
+
+
+<style>
+  .wrap-footer-navi .box1, .wrap-footer-navi .box2, .wrap-footer-navi .box3, .wrap-footer-navi .box4 {
+    flex:1;
+  }
+  .wrap-footer-navi .navi-L {
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom:30px;
+  }
+  .wrap-footer-navi p {
+    margin-bottom:20px;
+  }
+  .lang-footer {
+    margin-top:30px;
+  }
+  .box4 {
+    font-weight:bold;
+  }
+
+  @media only screen and (max-width: 991px) {
+    .wrap-footer-navi .box1, .wrap-footer-navi .box2, .wrap-footer-navi .box3, .wrap-footer-navi  .box4 p {
+      display: none;
+      visibility: hidden;
+    }
+    .wrap-footer-navi .lang-footer {
+      width: 100%;
+      margin-top:50px;
+    }
+    
+    .wrap-footer-navi .lang-footer img {
+      width:30px;
+    }
+  }
+
+</style>
+
+  <div class="wrap-footer wrap-footer-navi">
+
+    <div class="box1">
+      <div class="navi-L">会社情報</div>
+      <p><a href="#" class="text-hover text-hover-w">代表あいさつ</a></p>
+      <p><a href="#" class="text-hover text-hover-w">企業理念</a></p>
+      <p><a href="#" class="text-hover text-hover-w">会社概要</a></p>
+    </div>
+    <div class="box2">
+      <div class="navi-L">製品情報</div>
+      <p><a href="#" class="text-hover text-hover-w">自動車向け</a></p>
+      <p><a href="#" class="text-hover text-hover-w">オートバイ向け</a></p>
+      <p><a href="#" class="text-hover text-hover-w">農機具・汎用その他</a></p>
+    </div>
+    <div class="box3">
+      <div class="navi-L">技術情報</div>
+      <p><a href="#" class="text-hover text-hover-w">製品開発 VA・VE</a></p>
+      <p><a href="#" class="text-hover text-hover-w">本社の技術・開発・設備</a></p>
+      <p><a href="#" class="text-hover text-hover-w">生産ライン</a></p>
+      <p><a href="#" class="text-hover text-hover-w">品質保証</a></p>
+    </div>
+    <div class="box4">
+        <p><a href="#" class="text-hover text-hover-w">環境方針・CSR</a></p>
+        <p><a href="#" class="text-hover text-hover-w">採用情報</a></p>
+        <p><a href="#" class="text-hover text-hover-w">個人情報保護方針</a></p>
+        <div class="lang-footer">
+          <img src="assets/img/icon-flag-en.jpg" alt="英語の旗"> ENG　<img src="assets/img/icon-flag-TH.jpg" alt="タイ語の旗"> THAI
+        </div>
+    </div>
+
+  </div>
+
+
+</footer>
+
+
+
+<section class="block-menu-btn d-inline d-lg-none">
+  <div class="logo-sp">
+      <p><a href="/"><img src="assets/img/logo.png" alt="MITSUBOSHI FORGINGロゴマーク" style="width:160px; padding:5px 0 0 5px"></a></p>
+  </div>
+  <div class="navi">
+      <div class="box-lang">
+          <a href="#"><span class="flag-icon flag-icon-us"></span></a>
+      </div>
+      <div class="menu-btn">
+          <a class="menu-trigger" href="javascript:void(0)"><span></span><span></span><span></span></a>
+      </div>
+  </div>
+</section>
+
+<div class="burger-navi d-inline d-lg-none">
+  <div class="overlay">
+    <div class="menu-sp">
+      <a href="https://www.melodieskinder.com/" class="nav-sp">トップ</a>
+
+      <a href="#section-achievement" class="nav-sp">会社情報</a>
+
+      <a href="#section-achievement" class="nav-sp">製品情報</a>
+
+      
+
+      <div class="accordion-item">
+        <a href="javascript:void(0)" class="nav-sp accordion-toggle accordion-link" data-content-id="accordion1">技術情報 <span class="fa-sort-down-solid"></span></a>
+        <div class="accordion-content" id="accordion1">
+          <a href="#">製品開発 VA･VE</a>
+          <a href="#">本社の技術・開発・設備</a>
+          <a href="#">生産ライン</a>
+          <a href="#">品質保証</a>
+        </div>
+      </div>
+
+
+      <a href="#section-achievement" class="nav-sp">環境方針・CSR</a>
+      <a href="#section-company-profile" class="nav-sp">採用情報</a>
+      <a href="#section-member" class="nav-sp">お知らせ</a>
+      
+      <a href="#section-contact" class="btn btn-white btn-sp-contact">お問い合わせ</a>
+
+      <div class="phone-info">
+        <div class="phone-number">
+          TEL.  <a href="tel:+6629871391" class="text-hover text-hover-w">02-987-1391</a>
+        </div>
+      </div>
+
+      <div class="icon-sns">
+        <a class="text-hover" href="#"><img src="assets/img/icon-flag-en.jpg" alt="英語の国旗"> ENG</a>　<a class="text-hover" href="#"><img src="assets/img/icon-flag-th.jpg" alt="タイ語の国旗"> THAI</a>
+      </div>
+
+
+          <div></div>
+
+  
+    </div>
+  </div>
+</div>
+
+<div class="overlaycookie">
+  <div class="btn_area">
+      <div class="btn_area_child">
+          <div>
+              当ウェブサイトでは、サイトの利便性向上を目的に、クッキーを使用しております。詳細は<a href="/privacy-policy#cookie">クッキーポリシーをご覧ください</a>。また、サイト利用を継続することにより、クッキーの使用に同意するものとします。
+          </div>
+          <div>
+              <button class="btn" style="color:#3280e0; font-weight:bold;">OK</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="assets/js/event.js"></script>
+<script src="assets/js/lity.js"></script>
+<link rel=stylesheet href=assets/css/lity.css>
+
+
+<script>
+let originalWidth = 0;
+// ページの読み込み完了時にアニメーションを開始
+window.onload = function() {
+  // アニメーション開始時にスクロールを無効にする
+  document.body.classList.add('no-scroll');
+
+  // xx 初期状態で横幅を0に設定
+  originalWidth = document.querySelector('.xx').offsetWidth;
+  gsap.set('.xx', { width: 0 });
+
+  // 背景のフェードアウトアニメーション
+  gsap.to('.background', {
+    duration: 2, 
+    autoAlpha: 0,
+    ease: 'power2.in',
+    onComplete: function() {
+      document.querySelector('.logo').style.display = 'none';
+
+      // .xx 要素の横幅をアニメーション
+      gsap.to('.xx', {
+        width: originalWidth,
+        duration: .45,
+        ease: 'power2.out',
+        onComplete: animateText
+      });
+
+      // スライドショーの初期化
+      initSlideshow();
+
+      // アニメーションが完了したらスクロールを再度有効にする
+      document.body.classList.remove('no-scroll');
+    }
+  });
+
+  // ロゴのフェードアウトアニメーション
+  gsap.to('.logo', {
+    duration: .85,
+    autoAlpha: 0,
+    ease: 'power2.in'
+  });
+
+  InitTextSlideIn();
+};
+
+// テキストのアニメーション
+function animateText() {
+  const isTextMask = document.querySelector('.xx .text-mask');
+  const textMask = isTextMask.querySelector('span');
+
+  // マスクを1行毎に分割するため新規作成
+  let newTextMaskHtml = '<div class="text-mask"><span></span></div>';
+  document.querySelector('.xx').insertAdjacentHTML('beforeend', newTextMaskHtml);
+  let newTextMask = document.querySelectorAll('.xx .text-mask');
+  newTextMask = newTextMask[newTextMask.length - 1].querySelector('span');
+
+  // テキストを1文字ずつ分割し、新しいマスクに複製
+  const characters = textMask.textContent.split("");
+  textMask.textContent = '';
+
+  let maskWidth = 0
+  characters.forEach(char => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.style.opacity = 1;
+    span.style.transform = 'translateY(100%)';
+    span.style.visibility = 'hidden';
+    textMask.appendChild(span);
+
+    maskWidth += span.offsetWidth;
+
+    // 行がブロックの幅を超えたら新しいマスクを作成
+    if (originalWidth < maskWidth) {
+      document.querySelector('.xx').insertAdjacentHTML('beforeend', newTextMaskHtml);
+      newTextMask = document.querySelectorAll('.xx .text-mask');
+      newTextMask = newTextMask[newTextMask.length - 1].querySelector('span');
+
+      maskWidth = span.offsetWidth;
+    }
+
+    newTextMask.appendChild(span);
+  });
+
+  // 元のマスクは削除
+  isTextMask.remove();
+
+  gsap.to('.xx .text-mask span span', {
+    opacity: 1,
+    transform: 'translateY(0)',
+    visibility: 'visible',
+    stagger: 0.07,
+    ease: 'power2.out'
+  });
+};
+
+// スライドショー初期化関数
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  let zIndex = 100;
+
+  slides.forEach((slide, index) => {
+    gsap.set(slide, { x: '100%', zIndex: zIndex - index, scale: 1.0 });
+
+    gsap.to(slide, {
+      x: '0%',
+      scale: 1,
+      duration: 0.8,
+      delay: index * 2,
+      repeat: -1,
+      repeatDelay: slides.length * 2,
+      onStart: () => {
+        zIndex++;
+        gsap.set(slide, { zIndex: zIndex });
+      },
+      onRepeat: () => {
+        zIndex++;
+        gsap.set(slide, { x: '-532px', zIndex: zIndex - index });
+      }
+    });
+  });
+};
+
+
+
+
+
+
+
+
+
+//テキストの移動ループ
+gsap.to('.name-wrap', { x: -1500, duration:14, repeat: -1, ease: 'none' });
+
+// スライドショー初期化関数
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  let zIndex = 100;
+
+  slides.forEach((slide, index) => {
+    //gsap.set(slide, { x: '100%', zIndex: zIndex - index, scale: .2 });
+    gsap.set(slide, { x: '100%', zIndex: zIndex - index, scale: 1.0 });
+
+    // スライドインアニメーション
+    gsap.to(slide, {
+      x: '0%',
+      scale: 1, // スケールを120%から100%に変更
+      duration: 0.8,
+      delay: index * 2,
+      repeat: -1,
+      repeatDelay: slides.length * 2,
+      onStart: () => {
+        // 最前面に来た時にz-indexを最大値に設定
+        zIndex++;
+        gsap.set(slide, { zIndex: zIndex });
+      },
+      onRepeat: () => {
+        // 画面外に移動する際にz-indexを下げる
+        zIndex++;
+        gsap.set(slide, { x: '-532px', zIndex: zIndex - index });
+      }
+    });
+  });
+}
+
+
+
+
+//ナビの吸着用
+document.addEventListener('scroll', function() {
+  var navContainer = document.querySelector('.nav-container');
+  var navbarContainer = document.querySelector('.navbar-container');
+  var mainvisual = document.querySelector('.main-visual');
+
+  var stickyPoint = navbarContainer.offsetHeight; // navbar-containerの高さを基準に
+
+  if (window.pageYOffset >= stickyPoint) {
+    navContainer.classList.add('fixed');
+    mainvisual.classList.add('fixed2');
+  } else {
+    navContainer.classList.remove('fixed');
+    mainvisual.classList.remove('fixed2');
+  }
+});
+
+
+//テキストスライドインアニメーション
+function InitTextSlideIn() {
+  const textSlideInArray = document.querySelectorAll('.js-text-slide-in');
+
+  textSlideInArray.forEach(textSlideIn => {
+    const originalWidth = textSlideIn.offsetWidth;
+    const textMaskWraps = textSlideIn.querySelectorAll('.js-text-mask-wrap');
+
+    textMaskWraps.forEach(textMaskWrap =>{
+      const isTextMask = textMaskWrap.querySelectorAll('.js-text-mask')[0];
+      const textMask = isTextMask.querySelector('span');
+
+      // マスクを1行毎に分割するため新規作成
+      let newTextMaskHtml = '<div class="js-text-mask"><span></span></div>';
+      textMaskWrap.insertAdjacentHTML('beforeend', newTextMaskHtml);
+      let newTextMask = textMaskWrap.querySelectorAll('.js-text-mask');
+      newTextMask = newTextMask[newTextMask.length - 1].querySelector('span');
+
+      const characters = textMask.textContent.split("");
+      textMask.textContent = '';
+
+      let maskWidth = 0
+      characters.forEach(char => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.opacity = 1;
+        span.style.transform = 'translateY(100%)';
+        span.style.visibility = 'hidden';
+        textMask.appendChild(span);
+
+        maskWidth += span.offsetWidth;
+
+        // 行がブロックの幅を超えたら新しいマスクを作成
+        if (originalWidth < maskWidth) {
+          textMaskWrap.insertAdjacentHTML('beforeend', newTextMaskHtml);
+          newTextMask = textMaskWrap.querySelectorAll('.js-text-mask');
+          newTextMask = newTextMask[newTextMask.length - 1].querySelector('span');
+
+          maskWidth = span.offsetWidth;
+        }
+
+        newTextMask.appendChild(span);
+      });
+      // 元のマスクは削除
+      isTextMask.remove();
+
+      gsap.to(textMaskWrap.querySelectorAll('.js-text-mask span span'), {
+        opacity: 1,
+        transform: 'translateY(0)',
+        visibility: 'visible',
+        stagger: 0.07,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: textSlideIn,
+          start: 'bottom bottom',
+        },
+      });
+    });
+  });
+};
+
+</script>
+
+
+
+
+</body>
+</html>
