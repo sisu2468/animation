@@ -144,7 +144,7 @@
 <style>
   .xx {
     width: auto;
-    height: 180px;
+    height: 190px;
     background: #3280e0;
     line-height: 1.35;
     color: #fff;
@@ -161,7 +161,8 @@
   }
   .ani {
     clip-path: inset(0 120% 0 0); 
-    animation: reveal 5s linear forwards;
+    animation: reveal 3s linear forwards;
+    animation-delay: 1.5s;
   }
   @keyframes reveal {
     to {
@@ -176,6 +177,7 @@
   @media only screen and (max-width: 425px){
     .xx {
       top: 470px;
+      height: 110px;
     }
     .bkco, .ani{
       width: 100%;
