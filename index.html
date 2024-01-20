@@ -143,29 +143,25 @@
 
 <style>
   .xx {
-    top:260px;
+    width: auto;
+    height: 180px;
+    background: #3280e0;
+    line-height: 1.35;
+    color: #fff;
+    position: absolute;
+    z-index: 40;
+    top: 260px;
     right: 0px;
-    position:absolute;
-    z-index:40;
+    padding: 10px 0;
+    overflow: hidden;
   }
   .text-mask {
     overflow: hidden;
     position: relative;
   }
-  .bkco {
-    position: absolute;
-    clip-path: inset(0 0 0 120%); 
-    animation: bkani 5s linear forwards;
-  }
-  @keyframes bkani {
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
   .ani {
     clip-path: inset(0 120% 0 0); 
-    animation: reveal 10s linear forwards;
-    animation-delay: 3.5s;
+    animation: reveal 5s linear forwards;
   }
   @keyframes reveal {
     to {
@@ -188,7 +184,6 @@
 </style>
 
 <div class="xx">
-  <img class="bkco" src="./assets/img/bkcolor.png">
   <div class="text-mask">
     <img class="ani" src="./assets/img/main-en.png">
   </div>
