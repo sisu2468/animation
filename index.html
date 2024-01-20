@@ -169,51 +169,64 @@
       clip-path: inset(0 0 0 0);
     }
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (min-width: 1024px) {
+    .xx {
+      width: 830px;
+      height: 190px;
+      top:270px;
+    }
+    .ani{
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 991px) {
     .xx {
       width: 830px;
       height: 190px;
       top:210px;
     }
+    .ani{
+      width: 100%;
+    }
   }
   @media only screen and (max-width: 768px) {
     .xx {
-      width: 648px;
+      width: 648px !important;
       height: 180px;
       top:250px;
     }
-    .ani{
-      width: 650px;
+    .ani {
+      width: 648px;
     }
   }
   @media only screen and (max-width: 425px){
     .xx {
-      top: 470px;
-      width: 425px;
+      top: 540px;
+      width: 425px !important;
       height: 110px;
     }
     .ani{
-      width: 425px;
+      width: 100%;
     }
   }
   @media only screen and (max-width: 375px){
     .xx {
       top: 470px;
-      width: 375px;
+      width: 375px !important;
       height: 95px;
     }
     .ani{
-      width: 375px;
+      width: 100%;
     }
   }
   @media only screen and (max-width: 320px){
     .xx {
-      top: 470px;
-      width: 320px;
+      top: 450px;
+      width: 320px !important;
       height: 90px;
     }
     .ani{
-      width: 320px;
+      width: 100%;
     }
   }
 </style>
