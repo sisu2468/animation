@@ -131,6 +131,7 @@
   .main-visual img {
     width:100%;
     height:auto;
+    position: relative;
   }
   @media only screen and (max-width: 991px) {
     .main-visual {
@@ -173,17 +174,7 @@
     .xx {
       width: 830px;
       height: 190px;
-      top:270px;
-    }
-    .ani{
-      width: 100%;
-    }
-  }
-  @media only screen and (max-width: 991px) {
-    .xx {
-      width: 830px;
-      height: 190px;
-      top:210px;
+      top:260px;
     }
     .ani{
       width: 100%;
@@ -201,32 +192,41 @@
   }
   @media only screen and (max-width: 425px){
     .xx {
-      top: 500px;
+      top: 472px;
       width: 425px !important;
       height: 110px;
     }
     .ani{
       width: 100%;
     }
+    .main-visual, .main-visual.fixed2{
+      margin-top:42px;
+    }
   }
   @media only screen and (max-width: 375px){
     .xx {
-      top: 430px;
+      top: 422px;
       width: 375px !important;
       height: 95px;
     }
     .ani{
       width: 100%;
     }
+    .main-visual, .main-visual.fixed2{
+      margin-top:42px;
+    }
   }
   @media only screen and (max-width: 320px){
     .xx {
-      top: 350px;
+      top: 372px;
       width: 320px !important;
       height: 90px;
     }
     .ani{
       width: 100%;
+    }
+    .main-visual, .main-visual.fixed2{
+      margin-top:42px;
     }
   }
 </style>
@@ -980,8 +980,6 @@
 
 
 </footer>
-
-
 
 <section class="block-menu-btn d-inline d-lg-none">
   <div class="logo-sp">
