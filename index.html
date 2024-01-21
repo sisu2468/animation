@@ -144,7 +144,6 @@
 
 <style>
   .xx {
-    width: auto;
     height: 190px;
     background: #3280e0;
     line-height: 1.35;
@@ -155,6 +154,14 @@
     right: 0px;
     padding: 10px 0;
     overflow: hidden;
+  }
+  @keyframes bluedis {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100px;
+    }
   }
   .text-mask {
     overflow: hidden;
@@ -182,7 +189,6 @@
   }
   @media only screen and (max-width: 768px) {
     .xx {
-      width: 648px !important;
       height: 180px;
       top:250px;
     }
@@ -193,7 +199,6 @@
   @media only screen and (max-width: 425px){
     .xx {
       top: 472px;
-      width: 425px !important;
       height: 110px;
     }
     .ani{
@@ -206,7 +211,6 @@
   @media only screen and (max-width: 375px){
     .xx {
       top: 422px;
-      width: 375px !important;
       height: 95px;
     }
     .ani{
@@ -219,7 +223,6 @@
   @media only screen and (max-width: 320px){
     .xx {
       top: 372px;
-      width: 320px !important;
       height: 90px;
     }
     .ani{
@@ -1089,7 +1092,6 @@ window.onload = function() {
         ease: 'power2.out',
         onComplete: animateText
       });
-
       // スライドショーの初期化
       initSlideshow();
 
